@@ -4,9 +4,159 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>新闻热点数据分析与可视化系统</title>
+    <link rel="stylesheet" href="./assets/lib/layui/css/layui.css">
+    <link rel="stylesheet" href="./assets/lib/layui/css/layui.mobile.css">
+   
+    <!-- 导入第三方图标库 -->
+    <!-- <link rel="stylesheet" href="./assets/lib/bootstrap.css"> -->
+    <link rel="stylesheet" href="./assets/fonts/iconfont.css">
+    <link rel="stylesheet" href="./assets/css/index.css">
+   
 </head>
 <body>
-    
-</body>
+    <div class="layui-layout layui-layout-admin">
+      <div class="layui-header layui-bg-cyan" style="height: 61px;">
+        <div class="layui-logo layui-hide-xs layui-bg-black ">
+           
+            <span class="iconfont icon-16" style="font-size: 25px;"> 新闻热点</span></div>
+        <!-- 头部区域（可配合layui 已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left layui-bg-cyan">
+          <!-- 移动端显示 -->
+          <li class="layui-nav-item layui-show-xs-inline-block layui-hide-sm layui-bg-cyan" lay-header-event="menuLeft">
+            <i class="layui-icon layui-icon-spread-left"></i>
+          </li>
+          
+          <li class="layui-nav-item layui-hide-xs"><a href=""><i class="layui-icon">&#xe60c;</i> 当前热点</a></li>
+          <li class="layui-nav-item layui-hide-xs"><a href=""><i class="layui-icon">&#xe60c;</i> 昨日在线</a></li>
+          <li class="layui-nav-item layui-hide-xs"><a href=""><i class="layui-icon">&#xe60c;</i> 热点预测</a></li>
+          <li class="layui-nav-item layui-bg-cyan">
+            <a href="javascript:;"><span class="iconfont icon-16"> 新闻分析</span></a>
+            <dl class="layui-nav-child">
+              <dd><a href=""><i class="layui-icon">&#xe60c;</i> 当前热点</a></dd>
+              <dd><a href=""><i class="layui-icon">&#xe60c;</i> 昨日在线</a></dd>
+              <dd><a href=""><i class="layui-icon">&#xe60c;</i> 热点预测</a></dd>
+            </dl>
+          </li>
+        </ul>
+        <ul class="layui-nav layui-layout-right layui-bg-cyan">
+          <li class="layui-nav-item layui-show-md-inline-block">
+            <a href="javascript:;" class="userinfo">
+              <img src="./assets/images/sample.jpg" style="margin-bottom:11px" class="layui-nav-img">
+                <span class="text-avatar">W</span>
+              <span class="iconfont icon-user"> 个人中心</span>
+            </a>
+            <dl class="layui-nav-child">
+              <dd><a href=""><i class="layui-icon">&#xe60c;</i> 基本资料</a></dd>
+              <dd><a href=""><i class="layui-icon">&#xe60c;</i> 更换头像</a></dd>
+              <dd><a href=""><i class="layui-icon">&#xe60c;</i> 重置密码</a></dd>
+              <dd><a href="javascript:;" id="btnLogout"><span class="iconfont icon-tuichu"> 退出</span></a></dd>
+            </dl>
+          </li>
+          <li class="layui-nav-item" lay-header-event="menuRight" lay-unselect>
+            <a href="javascript:;">
+              <i class="layui-icon layui-icon-more-vertical"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+          <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+          <ul class="layui-nav layui-nav-tree" lay-filter="test" lay-shrink="all">
+
+
+            <div href="javascript:;" class="userinfo">
+                <img src="./assets/images/sample.jpg" style="margin-bottom:11px" class="layui-nav-img">
+                <span class="text-avatar">W</span>
+                <span class=" " id="welcome"> 彬哥你好</span>
+            </div>
+
+
+            
+            <li class="layui-nav-item layui-this "><a href="./home/dashboard.html" target="fm"><span class="iconfont icon-home"> 首页</span></a></li>
+            <li class="layui-nav-item"><a href="javascript:;"><span class="iconfont icon-pinglun"> 新闻分析</span></a></li>
+            <li class="layui-nav-item layui-nav-itemed">
+              <a class="" lay-shrink="all" href="javascript:;"><span class="iconfont icon-16"> 热点组</span></a>
+              <dl class="layui-nav-child">
+                <dd><a href="javascript:;"><i class="layui-icon">&#xe60c;</i> 国际政治新闻分析</a></dd>
+                <dd><a href="javascript:;"><i class="layui-icon">&#xe60c;</i> 国内实时热点分析</a></dd>
+                <dd><a href="javascript:;"><i class="layui-icon">&#xe60c;</i> 热点实时预测</a></dd>
+                <dd><a href="javascript:;"><i class="layui-icon">&#xe60c;</i> 聚焦</a></dd>
+              </dl>
+            </li>
+            <li class="layui-nav-item " >
+              <a href="javascript:;"><span class="iconfont icon-16"> 热点画像</span></a>
+              <dl class="layui-nav-child">
+                <dd><a href="javascript:;"><i class="layui-icon">&#xe60c;</i> 聚焦今日热点</a></dd>
+                <dd><a href="javascript:;"><i class="layui-icon">&#xe60c;</i> 昨日热点回顾</a></dd>
+                <dd><a href="javascript:;"><i class="layui-icon">&#xe60c;</i> 热点跳转</a></dd>
+              </dl>
+            </li>
+            <li class="layui-nav-item " >
+                <a href="javascript:;"><span class="iconfont icon-16"> 个人中心</span></a>
+                <dl class="layui-nav-child">
+                  <dd><a href="javascript:;"><i class="layui-icon">&#xe60c;</i> 修改头像</a></dd>
+                  <dd><a href="javascript:;"><i class="layui-icon">&#xe60c;</i> 注销账号</a></dd>
+                  <dd><a href="javascript:;"><i class="layui-icon">&#xe60c;</i> 热点跳转</a></dd>
+                </dl>
+              </li>
+           
+          </ul>
+        </div>
+      </div>
+      
+      <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div style="padding: 15px;">
+            <iframe name ="fm" src="./home/dashboard.html" frameborder="0"></iframe>
+        
+        </div>
+      </div>
+      
+      <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        180102050135-邬思彬-毕业设计实现  
+
+        
+      </div>
+    </div>
+    <!-- <link rel="stylesheet" href="./assets/css/index.css"> -->
+    <!-- <script src="./assets/lib/jquery.js"></script> -->
+    <script src="./assets/lib/layui/layui.all.js"></script>
+    <script src="./assets/lib/jquery.js"></script>
+    <!-- //导入自己封装的basea pi -->
+    <script src="./assets/js/baseAPI.js"></script>
+    <script src="./assets/js/index.js"></script>
+    <!-- <script src="./assets/lib/layui/layui.js"></script> -->
+    <script>
+    //JS 
+    layui.use(['element', 'layer', 'util'], function(){
+      var element = layui.element
+      ,layer = layui.layer
+      ,util = layui.util
+      ,$ = layui.$;
+      
+      //头部事件
+      util.event('lay-header-event', {
+        //左侧菜单事件
+        menuLeft: function(othis){
+          layer.msg('展开左侧菜单的操作', {icon: 0});
+        }
+        ,menuRight: function(){
+          layer.open({
+            type: 1
+            ,content: '<div style="padding: 15px;">处理右侧面板的操作</div>'
+            ,area: ['260px', '100%']
+            ,offset: 'rt' //右上角
+            ,anim: 5
+            ,shadeClose: true
+          });
+        }
+      });
+      
+    });
+    </script>
+    </body>
 </html>
