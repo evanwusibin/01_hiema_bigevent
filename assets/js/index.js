@@ -15,7 +15,9 @@ $(function(){
             layer.close(index);
           });
     })
+
 })
+
 
 
 //获取用户基本信息
@@ -35,8 +37,8 @@ function getUserInfo(){
                 return layui.layer.msg('获取用户信息失败')
             } 
             //调用 rendarAvatar渲染用户头像
-            rendarAvatar(res.data)
-        },
+            renderAvatar(res.data)
+        }
         // 调用有权限接口需要用这个
         //阻止匿名登录不论成功还是失败最终都会调用complete
         // complete: function(res){
@@ -54,16 +56,17 @@ function getUserInfo(){
 }
 
 // 渲染用户头像
-function rendarAvatar(user){
+function renderAvatar(user){
     // 1、获取用户昵称
     var name = user.nickname || user.username
-    // 2、设置欢迎文本
+    // 2、设置欢迎文本，通过jq快速抓到dom然后用html在里面加内容内部添加
     $('#welcome').html('欢迎&nbsp;&nbsp;' + name)
     //3、按需求渲染用户头像
     if(user.user_pic !== null) {
-        //渲染
+        //渲染 attr是给元素设置内容，attr('url',获取到的具体元素名称)
         $('.layui-nav-img').attr('src',user.user_pic).show()
-    }else {
+        $('.text-avatar').hide()
+    }
         //  渲染文本头像
         // return layui.layer.msg('请添加头像')
         // 实际上需要渲染文本头像，需要在图片后面加上一个标签里面写上字母加上背景 边角为50px的圆形头像
@@ -71,6 +74,8 @@ function rendarAvatar(user){
         // 获取到用户名的第一个字符
         var first = name[0].toUpperCase()
         $('.text-avatar').html(first).show()
-    }
+    
    
 }
+
+
