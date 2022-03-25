@@ -30,7 +30,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">新闻类别</label>
             <div class="layui-input-block">
-              <select name="cate_id" lay-verify="required">
+              <select name="cate_id" >
                 <option value="">请选择新闻类别</option>
                 <option value="0">国内热点</option>
                 <option value="1">国际热点</option>
@@ -94,7 +94,7 @@
 
 <!-- 模板引擎记得设置id 到时候调用 template的时候方便 -->
 <script type="text/html" id="tpl-cate">
-            <option value="">请选择新闻类别</option>
+            <option>请选择新闻类别</option>
             {{each data}}
             <!-- 注意里面的值都是需要用$value.xxx 模板引擎 -->
             <option value="{{$value.id}}">{{$value.name}}</option>

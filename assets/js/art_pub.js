@@ -55,7 +55,7 @@ $(function(){
     //获取到文件的列表数组
     var files = e.target.Files
     //判断用户是否选择了文件
-    if(files.length === 0){
+    if(files.length == 0){
         return 
     }
     //根据文件创建对应的url地址
@@ -112,9 +112,6 @@ $(function(){
 
     //调用方法
     publishArticle(fd)
-
-
-
 
 
 
